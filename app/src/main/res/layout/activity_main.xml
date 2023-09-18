@@ -21,7 +21,7 @@
         style="@style/Value"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="36dp"
+        android:layout_marginEnd="24dp"
         android:ellipsize="end"
         android:maxLines="1"
         android:text="홍길동"

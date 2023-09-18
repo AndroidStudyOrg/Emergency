@@ -12,3 +12,5 @@
  - Style-Theme
  - 일관성 있는 UI 활용(style 만들기)
  - 라디오 버튼들 중에 하나만 선택 가능하기에 라디오 그룹 안에 라디오 버튼들을 넣어줘야 한다.
+ - xml 파일에서 요소들을 하나로 묶어줄 수 있는 helper->layer
+ - 캘린더를 사용 가능한 DatePickerDialog
