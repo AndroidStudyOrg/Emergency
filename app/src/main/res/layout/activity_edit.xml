@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".EditActivity">
 
     <TextView
         android:id="@+id/tv_name"
@@ -16,15 +16,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_nameValue"
+    <EditText
+        android:id="@+id/et_nameValue"
         style="@style/Value"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="36dp"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:text="홍길동"
+        android:hint="ex) 홍길동"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideLine"
         app:layout_constraintTop_toTopOf="@id/tv_name" />
@@ -39,16 +38,24 @@
         app:layout_constraintTop_toBottomOf="@id/tv_name" />
 
     <TextView
-        android:id="@+id/tv_birthhDayValue"
+        android:id="@+id/et_birthhDayValue"
         style="@style/Value"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:maxLines="1"
+        android:paddingEnd="8dp"
         android:text="0000-00-00"
         app:layout_constraintBaseline_toBaselineOf="@id/tv_birthDay"
-        app:layout_constraintEnd_toEndOf="@id/tv_nameValue"
+        app:layout_constraintEnd_toStartOf="@id/iv_birthdate"
         app:layout_constraintStart_toStartOf="@+id/guideLine" />
+
+    <ImageView
+        android:id="@+id/iv_birthdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_edit_calendar_24"
+        app:layout_constraintBottom_toBottomOf="@id/tv_birthDay"
+        app:layout_constraintEnd_toEndOf="@id/et_nameValue"
+        app:layout_constraintTop_toTopOf="@id/tv_birthDay" />
 
     <TextView
         android:id="@+id/tv_bloodType"
@@ -59,17 +66,37 @@
         app:layout_constraintStart_toStartOf="@id/tv_name"
         app:layout_constraintTop_toBottomOf="@+id/tv_birthDay" />
 
-    <TextView
-        android:id="@+id/tv_bloodTypeValue"
-        style="@style/Value"
+    <RadioGroup
+        android:id="@+id/rg_bloodType"
         android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="end"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@id/tv_bloodType"
+        app:layout_constraintEnd_toStartOf="@id/spinner_bloodType"
+        app:layout_constraintStart_toStartOf="@id/guideLine"
+        app:layout_constraintTop_toTopOf="@id/tv_bloodType">
+
+        <RadioButton
+            android:id="@+id/rb_plus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RH+" />
+
+        <RadioButton
+            android:id="@+id/rb_minus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RH-" />
+    </RadioGroup>
+
+    <Spinner
+        android:id="@+id/spinner_bloodType"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:text="O형"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tv_bloodType"
-        app:layout_constraintEnd_toEndOf="@+id/tv_nameValue"
-        app:layout_constraintStart_toStartOf="@id/guideLine" />
+        app:layout_constraintBottom_toBottomOf="@id/tv_bloodType"
+        app:layout_constraintEnd_toEndOf="@id/et_nameValue"
+        app:layout_constraintTop_toTopOf="@id/tv_bloodType" />
 
     <TextView
         android:id="@+id/tv_callNum"
@@ -80,16 +107,15 @@
         app:layout_constraintStart_toStartOf="@+id/tv_name"
         app:layout_constraintTop_toBottomOf="@+id/tv_bloodType" />
 
-    <TextView
-        android:id="@+id/tv_callNumValue"
+    <EditText
+        android:id="@+id/et_callNumValue"
         style="@style/Value"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:text="000-0000-0000"
+        android:hint="000-0000-0000"
+        android:inputType="phone"
         app:layout_constraintBaseline_toBaselineOf="@+id/tv_callNum"
-        app:layout_constraintEnd_toEndOf="@+id/tv_nameValue"
+        app:layout_constraintEnd_toEndOf="@+id/et_nameValue"
         app:layout_constraintStart_toStartOf="@+id/guideLine" />
 
     <TextView
@@ -101,16 +127,25 @@
         app:layout_constraintStart_toStartOf="@id/tv_name"
         app:layout_constraintTop_toBottomOf="@+id/tv_callNum" />
 
-    <TextView
-        android:id="@+id/tv_warningValue"
+    <CheckBox
+        android:id="@+id/cb_warning"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="주의사항 보기"
+        android:gravity="end|center_vertical"
+        app:layout_constraintBottom_toBottomOf="@id/tv_warning"
+        app:layout_constraintEnd_toEndOf="@id/et_nameValue"
+        app:layout_constraintStart_toStartOf="@id/guideLine"
+        app:layout_constraintTop_toTopOf="@id/tv_warning" />
+
+    <EditText
+        android:id="@+id/et_warningValue"
         style="@style/Value"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:maxLines="1"
         android:text="주의사항"
-        app:layout_constraintBaseline_toBaselineOf="@id/tv_warning"
-        app:layout_constraintEnd_toEndOf="@id/tv_nameValue"
+        app:layout_constraintTop_toBottomOf="@id/cb_warning"
+        app:layout_constraintEnd_toEndOf="@id/et_nameValue"
         app:layout_constraintStart_toStartOf="@id/guideLine" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -119,14 +154,4 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.4" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/go_input_activity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="36dp"
-        android:clickable="true"
-        android:src="@drawable/baseline_edit_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
