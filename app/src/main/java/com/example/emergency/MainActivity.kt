@@ -2,6 +2,7 @@ package com.example.emergency
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -22,6 +23,14 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnDelete.setOnClickListener {
             deleteData()
+        }
+
+        binding.emergencyContactLayer.setOnClickListener {
+            with(Intent(Intent.ACTION_VIEW)) {
+                val phoneNumber = binding.tvCallNumValue.text.toString().replace("-", "")
+                data = Uri.parse("tel: $phoneNumber")
+                startActivity(this)
+            }
         }
     }
 

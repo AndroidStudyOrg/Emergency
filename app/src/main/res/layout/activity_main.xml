@@ -85,12 +85,23 @@
         style="@style/Value"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:ellipsize="end"
         android:maxLines="1"
         android:text="000-0000-0000"
         app:layout_constraintBaseline_toBaselineOf="@+id/tv_callNum"
-        app:layout_constraintEnd_toEndOf="@+id/tv_nameValue"
+        app:layout_constraintEnd_toStartOf="@id/iv_call"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideLine" />
+
+    <ImageView
+        android:id="@+id/iv_call"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_phone_24"
+        app:layout_constraintBottom_toBottomOf="@id/tv_callNumValue"
+        app:layout_constraintEnd_toEndOf="@id/tv_nameValue"
+        app:layout_constraintTop_toTopOf="@id/tv_callNumValue" />
 
     <TextView
         android:id="@+id/tv_warning"
@@ -139,4 +150,11 @@
         android:src="@drawable/baseline_delete_24"
         app:layout_constraintBottom_toTopOf="@id/go_input_activity"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.constraintlayout.helper.widget.Layer
+        android:id="@+id/emergencyContactLayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="tv_callNumValue,iv_call"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>
