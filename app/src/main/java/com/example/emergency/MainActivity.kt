@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.goInputActivity.setOnClickListener {
+            // 명시적 Intent
             val intent = Intent(this, EditActivity::class.java)
             startActivity(intent)
         }
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.emergencyContactLayer.setOnClickListener {
+            // 암시적 Intent
             with(Intent(Intent.ACTION_VIEW)) {
                 val phoneNumber = binding.tvCallNumValue.text.toString().replace("-", "")
                 data = Uri.parse("tel: $phoneNumber")
