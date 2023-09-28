@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.core.view.isVisible
 import com.example.emergency.databinding.ActivityMainBinding
 
@@ -17,6 +18,10 @@ class MainActivity : AppCompatActivity() {
         binding.goInputActivity.setOnClickListener {
             val intent = Intent(this, EditActivity::class.java)
             startActivity(intent)
+        }
+
+        binding.btnDelete.setOnClickListener {
+            deleteData()
         }
     }
 
@@ -39,5 +44,16 @@ class MainActivity : AppCompatActivity() {
                 binding.tvWarningValue.text = warning
             }
         }
+    }
+
+    private fun deleteData() {
+        with(getSharedPreferences(USER_INFORMATION, Context.MODE_PRIVATE).edit()) {
+            // SharedPreference에 있는 모든 데이터 삭제
+            clear()
+            // apply()까지 넣어줘야 함
+            apply()
+            getDataUiUpdate()
+        }
+        Toast.makeText(this, "초기화를 완료했습니다.", Toast.LENGTH_SHORT).show()
     }
 }
